@@ -1,0 +1,14 @@
+brave-bin
+clipman-debug
+libmongocrypt
+libtiff5
+mongodb-compass
+plymouth-theme-hud-3-git
+postman-bin
+python-pywal16
+rar
+ttf-wps-fonts
+visual-studio-code-bin
+wps-office
+yay
+yay-debug
