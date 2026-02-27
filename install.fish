@@ -1,35 +1,68 @@
 #!/usr/bin/env fish
 
-# Source folder (Wallpapers in current directory)
-set SOURCE_DIR "Wallpapers"
+echo "🚀 Starting dotfiles installation..."
 
-# Destination folder
-set DEST_DIR "$HOME/Pictures/Wallpapers"
+# -----------------------------
+# Variables
+# -----------------------------
+set DOTFILES_DIR (dirname (status -f))
+set HYPR_SOURCE "$DOTFILES_DIR/hypr"
+set HYPR_DEST "$HOME/.config/hypr"
+set WALL_SOURCE "$DOTFILES_DIR/Wallpapers"
+set WALL_DEST "$HOME/Pictures/Wallpapers"
 
-# Check if Wallpapers folder exists
-if test -d $SOURCE_DIR
-    echo "Found Wallpapers folder."
-
-    # Create destination directory if it doesn't exist
-    if not test -d "$HOME/Pictures"
-        echo "Creating ~/Pictures directory..."
-        mkdir -p "$HOME/Pictures"
-    end
-
-    if not test -d $DEST_DIR
-        echo "Creating ~/Pictures/Wallpapers directory..."
-        mkdir -p $DEST_DIR
-    end
-
-    # Move all contents inside Wallpapers to destination
-    echo "Moving wallpapers..."
-    mv $SOURCE_DIR/* $DEST_DIR/
-
-    echo "Removing empty source directory..."
-    rmdir $SOURCE_DIR
-
-    echo "Wallpapers moved successfully!"
-else
-    echo "Wallpapers folder not found in current directory."
+# -----------------------------
+# Ensure ~/.config exists
+# -----------------------------
+if not test -d "$HOME/.config"
+    echo "📁 Creating ~/.config directory..."
+    mkdir -p "$HOME/.config"
 end
 
+# -----------------------------
+# Backup existing hypr config
+# -----------------------------
+if test -d $HYPR_DEST
+    set BACKUP_NAME "$HOME/.config/hypr_backup_"(date +%Y%m%d_%H%M%S)
+    echo "💾 Backing up existing hypr config to $BACKUP_NAME"
+    mv $HYPR_DEST $BACKUP_NAME
+end
+
+# -----------------------------
+# Copy new hypr config
+# -----------------------------
+if test -d $HYPR_SOURCE
+    echo "⚙️ Installing hypr config..."
+    cp -r $HYPR_SOURCE $HYPR_DEST
+    echo "✅ Hypr config installed."
+else
+    echo "❌ hypr folder not found in dotfiles!"
+end
+
+# -----------------------------
+# Ensure ~/Pictures exists
+# -----------------------------
+if not test -d "$HOME/Pictures"
+    echo "🖼️ Creating ~/Pictures directory..."
+    mkdir -p "$HOME/Pictures"
+end
+
+# -----------------------------
+# Move Wallpapers
+# -----------------------------
+if test -d $WALL_SOURCE
+    echo "🎨 Moving Wallpapers..."
+
+    if test -d $WALL_DEST
+        echo "📂 Wallpapers folder already exists. Merging..."
+        cp -r $WALL_SOURCE/* $WALL_DEST/
+    else
+        mv $WALL_SOURCE "$HOME/Pictures/"
+    end
+
+    echo "✅ Wallpapers installed."
+else
+    echo "❌ Wallpapers folder not found in dotfiles."
+end
+
+echo "✨ Done! Restart Hyprland to apply changes."
