@@ -1,4 +1,10 @@
 #!/usr/bin/env fish
+set -e
+
+if not type -q yay
+    echo "❌ yay not installed. Install it first."
+    exit 1
+end
 
 echo "🚀 Starting dotfiles installation..."
 
@@ -27,7 +33,7 @@ end
 # -----------------------------
 # Backup existing hypr config
 # -----------------------------
-if test -d $HYPR_DEST
+if test -d $HYPR_DEST; and not diff -qr $HYPR_SOURCE $HYPR_DEST >/dev/null 2>&1
     set BACKUP_NAME "$HOME/.config/hypr_backup_"(date +%Y%m%d_%H%M%S)
     echo "💾 Backing up existing hypr config to $BACKUP_NAME"
     mv $HYPR_DEST $BACKUP_NAME
@@ -62,7 +68,7 @@ if test -d $WALL_SOURCE
         echo "📂 Wallpapers folder already exists. Merging..."
         cp -r $WALL_SOURCE/* $WALL_DEST/
     else
-        mv $WALL_SOURCE "$HOME/Pictures/"
+        cp -r $WALL_SOURCE $WALL_DEST
     end
 
     echo "✅ Wallpapers installed."
@@ -71,28 +77,58 @@ else
 end
 
 # -----------------------------
-# Install Plymouth
-# -----------------------------
-echo "🚀 Installing Plymouth splash..."
-
-sudo pacman -S --noconfirm plymouth
-yay -S --noconfirm plymouth-theme-circle-hud-git
-
-echo "🎨 Setting Plymouth theme..."
-sudo plymouth-set-default-theme -R circle-hud
-
-# -----------------------------
 # Install GRUB config
 # -----------------------------
 if test -f $GRUB_SOURCE
     echo "⚙️ Installing GRUB config..."
     sudo cp $GRUB_SOURCE /etc/default/grub
-    echo "🔧 Regenerating GRUB config..."
-    sudo grub-mkconfig -o /boot/grub/grub.cfg
     echo "✅ GRUB configured."
 else
     echo "❌ GRUB config not found in dotfiles."
 end
+
+# # -----------------------------
+# # Install Plymouth
+# # -----------------------------
+if not pacman -Q plymouth >/dev/null 2>&1
+    echo "🚀 Installing Plymouth splash..."
+    sudo pacman -S --noconfirm plymouth
+end
+
+echo "📂 Installing PlymouthTheme-Cat..."
+
+# Copy theme from dotfiles
+if test -d "$DOTFILES_DIR/plymouth/PlymouthTheme-Cat"
+    if not test -d /usr/share/plymouth/themes/PlymouthTheme-Cat
+        sudo cp -r $DOTFILES_DIR/plymouth/PlymouthTheme-Cat /usr/share/plymouth/themes/
+        echo "✅ Theme copied."
+    end
+else
+    echo "❌ PlymouthTheme-Cat not found in dotfiles plymouth!"
+end
+
+echo "🎨 Setting Plymouth theme..."
+sudo plymouth-set-default-theme -R PlymouthTheme-Cat
+
+echo "⚙️ Configuring Plymouth boot..."
+
+# Add plymouth hook if not present
+if not grep -q "plymouth" /etc/mkinitcpio.conf
+    echo "🧩 Adding plymouth hook..."
+    sudo sed -i 's/base udev/base udev plymouth/' /etc/mkinitcpio.conf
+end
+
+# Add splash to GRUB
+if not grep -q "quiet splash" /etc/default/grub
+    echo "🎛️ Updating GRUB kernel params..."
+    sudo sed -i 's/quiet/quiet splash/' /etc/default/grub
+end
+
+# Rebuild initramfs & grub
+echo "🔄 Rebuilding initramfs and GRUB..."
+sudo mkinitcpio -P
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+echo "✅ GRUB and initramfs configured."
 
 # -----------------------------
 # Install SDDM theme
@@ -117,7 +153,8 @@ if test -f $SDDM_CONFIG_SOURCE
 
     if test -f "$SDDM_CONFIG_DEST/default.conf"
         echo "💾 Backing up existing SDDM config..."
-        sudo mv "$SDDM_CONFIG_DEST/default.conf" "$SDDM_CONFIG_DEST/default.conf.bak"
+        set BACKUP "$SDDM_CONFIG_DEST/default.conf.bak."(date +%s)
+        sudo mv "$SDDM_CONFIG_DEST/default.conf" $BACKUP
     end
 
     echo "📦 Installing custom SDDM config..."
