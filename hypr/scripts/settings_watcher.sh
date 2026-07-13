@@ -86,9 +86,9 @@ compile_settings() {
     fi
 
     # 4. Regenerate keybindings.conf
-    echo "Regenerating keybindings.conf..."
-    cp "$TMPL_DIR/keybinds.conf.template" "$KEYBINDS_CONF"
-    jq -r '.keybinds[]? | "\(.type // "bind") = \(.mods // ""), \(.key // ""), \(.dispatcher // "exec")\(if .command and .command != "" then ", \(.command)" else "" end)"' "$SETTINGS_FILE" >> "$KEYBINDS_CONF"
+    # echo "Regenerating keybindings.conf..."
+    # cp "$TMPL_DIR/keybinds.conf.template" "$KEYBINDS_CONF"
+    # jq -r '.keybinds[]? | "\(.type // "bind") = \(.mods // ""), \(.key // ""), \(.dispatcher // "exec")\(if .command and .command != "" then ", \(.command)" else "" end)"' "$SETTINGS_FILE" >> "$KEYBINDS_CONF"
 
     # 5. Regenerate monitors.conf
     echo "Regenerating monitors.conf..."

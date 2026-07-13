@@ -5,12 +5,12 @@
   "workspaceCount": 8,
   "wallpaperDir": "/home/mayank/Pictures/Wallpapers",
   "language": "us",
-  "kbOptions": "",
+  "kbOptions": "grp:alt_shift_toggle",
   "monitors": [
     {
       "name": "eDP-1",
-      "resW": 1280,
-      "resH": 720,
+      "resW": 1366,
+      "resH": 768,
       "rate": 60,
       "x": 0,
       "y": 0,
@@ -21,472 +21,539 @@
   "keybinds": [
     {
       "type": "bind",
-      "mods": "ALT",
-      "key": "F4",
+      "mods": "$mainMod",
+      "key": "Q",
       "dispatcher": "exec",
-      "command": "hyprctl dispatch killactive"
+      "command": "hyprctl dispatch killactive",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT_L",
       "key": "F",
       "dispatcher": "exec",
-      "command": "hyprctl dispatch togglefloating"
+      "command": "hyprctl dispatch togglefloating",
+      "isEditing": false
     },
     {
       "type": "binde",
       "mods": "$mainMod SHIFT_L",
       "key": "left",
       "dispatcher": "resizeactive",
-      "command": "-50 0"
+      "command": "-50 0",
+      "isEditing": false
     },
     {
       "type": "binde",
       "mods": "$mainMod SHIFT_L",
       "key": "right",
       "dispatcher": "resizeactive",
-      "command": "50 0"
+      "command": "50 0",
+      "isEditing": false
     },
     {
       "type": "binde",
       "mods": "$mainMod SHIFT_L",
       "key": "up",
       "dispatcher": "resizeactive",
-      "command": "0 -50"
+      "command": "0 -50",
+      "isEditing": false
     },
     {
       "type": "binde",
       "mods": "$mainMod SHIFT_L",
       "key": "down",
       "dispatcher": "resizeactive",
-      "command": "0 50"
+      "command": "0 50",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod CTRL",
       "key": "left",
       "dispatcher": "movewindow",
-      "command": "l"
+      "command": "l",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod CTRL",
       "key": "right",
       "dispatcher": "movewindow",
-      "command": "r"
+      "command": "r",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod CTRL",
       "key": "up",
       "dispatcher": "movewindow",
-      "command": "u"
+      "command": "u",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod CTRL",
       "key": "down",
       "dispatcher": "movewindow",
-      "command": "d"
+      "command": "d",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "left",
       "dispatcher": "movefocus",
-      "command": "l"
+      "command": "l",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "right",
       "dispatcher": "movefocus",
-      "command": "r"
+      "command": "r",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "up",
       "dispatcher": "movefocus",
-      "command": "u"
+      "command": "u",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "down",
       "dispatcher": "movefocus",
-      "command": "d"
+      "command": "d",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "RETURN",
       "dispatcher": "exec",
-      "command": "kitty"
+      "command": "kitty",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "F",
       "dispatcher": "exec",
-      "command": "firefox"
+      "command": "brave",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "E",
       "dispatcher": "exec",
-      "command": "nautilus"
+      "command": "nautilus",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "R",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/reload.sh"
+      "command": "bash ~/.config/hypr/scripts/reload.sh",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "C",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh toggle clipboard"
+      "command": "~/.config/hypr/scripts/qs_manager.sh toggle clipboard",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "P",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh toggle movies"
+      "command": "~/.config/hypr/scripts/qs_manager.sh toggle movies",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "D",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle applauncher"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle applauncher",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT_L",
       "key": "S",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle settings"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle settings",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "Q",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle music"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle music",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "B",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle battery"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle battery",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "W",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle wallpaper",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "S",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle calendar"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle calendar",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "N",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle network"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle network",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT_L",
       "key": "T",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle focustime"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle focustime",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "V",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle volume"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle volume",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "H",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle guide"
+      "command": "bash ~/.config/hypr/scripts/qs_manager.sh toggle guide",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "Caps_Lock",
       "dispatcher": "exec",
-      "command": "sleep 0.1 && swayosd-client --caps-lock"
+      "command": "sleep 0.1 && swayosd-client --caps-lock",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "XF86MonBrightnessDown",
       "dispatcher": "exec",
-      "command": "swayosd-client --brightness lower"
+      "command": "swayosd-client --brightness lower",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "XF86MonBrightnessUp",
       "dispatcher": "exec",
-      "command": "swayosd-client --brightness raise"
+      "command": "swayosd-client --brightness raise",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "Print",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/screenshot.sh"
+      "command": "~/.config/hypr/scripts/screenshot.sh",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "SHIFT_L",
       "key": "Print",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/screenshot.sh --edit"
+      "command": "~/.config/hypr/scripts/screenshot.sh --edit",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "$mainMod",
       "key": "Print",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/screenshot.sh --full"
+      "command": "~/.config/hypr/scripts/screenshot.sh --full",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "$mainMod SHIFT_L",
       "key": "Print",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/screenshot.sh --full --edit"
+      "command": "~/.config/hypr/scripts/screenshot.sh --full --edit",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "XF86PowerOff",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/lock.sh"
+      "command": "bash ~/.config/hypr/scripts/lock.sh",
+      "isEditing": false
     },
     {
       "type": "bindel",
       "mods": "$mainMod",
       "key": "L",
       "dispatcher": "exec",
-      "command": "bash ~/.config/hypr/scripts/lock.sh"
+      "command": "bash ~/.config/hypr/scripts/lock.sh",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "$mainMod",
       "key": "SPACE",
       "dispatcher": "exec",
-      "command": "playerctl play-pause"
+      "command": "playerctl play-pause",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "XF86AudioPause",
       "dispatcher": "exec",
-      "command": "playerctl play-pause"
+      "command": "playerctl play-pause",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "XF86AudioPlay",
       "dispatcher": "exec",
-      "command": "playerctl play-pause"
+      "command": "playerctl play-pause",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "xf86AudioMicMute",
       "dispatcher": "exec",
-      "command": "swayosd-client --input-volume mute-toggle"
+      "command": "swayosd-client --input-volume mute-toggle",
+      "isEditing": false
     },
     {
       "type": "bindl",
       "mods": "",
       "key": "xf86audiomute",
       "dispatcher": "exec",
-      "command": "swayosd-client --output-volume mute-toggle"
+      "command": "swayosd-client --output-volume mute-toggle",
+      "isEditing": false
     },
     {
       "type": "bindel",
       "mods": "",
       "key": "xf86audiolowervolume",
       "dispatcher": "exec",
-      "command": "swayosd-client --output-volume lower"
+      "command": "swayosd-client --output-volume lower",
+      "isEditing": false
     },
     {
       "type": "bindel",
       "mods": "",
       "key": "xf86audioraisevolume",
       "dispatcher": "exec",
-      "command": "swayosd-client --output-volume raise"
+      "command": "swayosd-client --output-volume raise",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "1",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 1"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 1",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "2",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 2"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 2",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "3",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 3"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 3",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "4",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 4"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 4",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "5",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 5"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 5",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "6",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 6"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 6",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "7",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 7"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 7",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "8",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 8"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 8",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "9",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 9"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 9",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "0",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 10"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 10",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "1",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 1 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 1 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "2",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 2 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 2 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "3",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 3 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 3 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "4",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 4 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 4 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "5",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 5 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 5 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "6",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 6 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 6 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "7",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 7 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 7 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "8",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 8 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 8 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "9",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 9 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 9 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod SHIFT",
       "key": "0",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/qs_manager.sh 10 move"
+      "command": "~/.config/hypr/scripts/qs_manager.sh 10 move",
+      "isEditing": false
     },
     {
       "type": "bind",
       "mods": "$mainMod",
       "key": "TAB",
       "dispatcher": "exec",
-      "command": "~/.config/hypr/scripts/focus_next_monitor.sh"
+      "command": "~/.config/hypr/scripts/focus_next_monitor.sh",
+      "isEditing": false
     }
   ],
   "startup": [
