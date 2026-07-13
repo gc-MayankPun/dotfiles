@@ -49,7 +49,7 @@ Item {
     }
 
     onGlobalSearchQueryChanged: {
-        root.matchingKeybindIndices = root.getMatchingKeybindIndices(root.globalSearchQuery);
+        root.matchingKeybindIndices = [];
         root.rebuildSearchResultItems();
         root.searchHighlightIndex = -1;
     }
@@ -203,6 +203,7 @@ Item {
     property var tabNames: ["General", "Weather", "Keybinds", "Monitors", "Startup"]
     property var tabIcons: ["󰒓", "󰖐", "󰌌", "󰍹", "󰐥"]
     property var tabColors: ["teal", "blue", "peach", "green", "mauve"]
+    property var visibleTabIndices: [0, 1, 3, 4]
 
     property bool tab0Loaded: false
     property bool tab1Loaded: false
@@ -244,12 +245,16 @@ Item {
 
     Keys.onTabPressed: (event) => {
         if (root.isSearchMode) return;
-        root.currentTab = (root.currentTab + 1) % 5;
+        let vi = root.visibleTabIndices.indexOf(root.currentTab);
+        vi = (vi + 1) % root.visibleTabIndices.length;
+        root.currentTab = root.visibleTabIndices[vi];
         event.accepted = true;
     }
     Keys.onBacktabPressed: (event) => {
         if (root.isSearchMode) return;
-        root.currentTab = (root.currentTab + 4) % 5;
+        let vi = root.visibleTabIndices.indexOf(root.currentTab);
+        vi = (vi - 1 + root.visibleTabIndices.length) % root.visibleTabIndices.length;
+        root.currentTab = root.visibleTabIndices[vi];
         event.accepted = true;
     }
 
@@ -3094,7 +3099,7 @@ Item {
 
                         // Reduced the divisor to 2.5 so tabs don't squash and it's clear the list scrolls
                         property real tabItemW: (tabBarContainer.width - root.s(6)) / (root.tabNames.length <= 3 ? 3 : 2.5)
-                        contentWidth: root.tabNames.length * tabItemW + root.s(6)
+                        contentWidth: root.visibleTabIndices.length * tabItemW + root.s(6)
                         contentHeight: height
 
                         // Graceful smooth scrolling animation for tab selection
@@ -3158,7 +3163,7 @@ Item {
                             Behavior on color { ColorAnimation { duration: 300; easing.type: Easing.OutExpo } }
 
                             property int prevTab: 0
-                            property int curTab: root.currentTab
+                            property int curTab: root.visibleTabIndices.indexOf(root.currentTab)
 
                             onCurTabChanged: {
                                 if (curTab > prevTab) {
@@ -3200,23 +3205,24 @@ Item {
                             Repeater {
                                 model: root.tabNames.length
                                 Item {
+                                    property int realIdx: root.visibleTabIndices[index]
                                     width: tabBarFlickable.tabItemW
                                     height: parent.height
 
-                                    property bool isActive: root.currentTab === index
+                                    property bool isActive: root.currentTab === realIdx
 
                                     RowLayout {
                                         anchors.centerIn: parent
                                         spacing: root.s(7)
                                         Text {
-                                            text: root.tabIcons[index]
+                                            text: root.tabIcons[realIdx]
                                             font.family: "Iosevka Nerd Font"
                                             font.pixelSize: root.s(14)
                                             color: isActive ? root.base : root.subtext0
                                             Behavior on color { ColorAnimation { duration: 250; easing.type: Easing.OutExpo } }
                                         }
                                         Text {
-                                            text: root.tabNames[index]
+                                            text: root.tabNames[realIdx]
                                             font.family: "JetBrains Mono"
                                             font.weight: isActive ? Font.Bold : Font.Medium
                                             font.pixelSize: root.s(12)
@@ -3229,7 +3235,7 @@ Item {
                                         anchors.fill: parent
                                         hoverEnabled: true
                                         cursorShape: Qt.PointingHandCursor
-                                        onClicked: { root.currentTab = index; root.clearHighlight(); }
+                                        onClicked: { root.currentTab = realIdx; root.clearHighlight(); }
                                     }
                                 }
                             }
@@ -4381,4 +4387,3 @@ Item {
     }
 }
 }
-
