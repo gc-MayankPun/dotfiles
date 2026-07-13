@@ -68,10 +68,10 @@ compile_settings() {
     fi
 
     # 2. Regenerate settings.conf using template
-    echo "Regenerating settings.conf..."
-    sed -e "s|{{KB_LAYOUT}}|$LANG|g" \
-        -e "s|{{KB_OPTIONS}}|$KB_OPT|g" \
-        "$TMPL_DIR/settings.conf.template" > "$SETTINGS_CONF"
+    #echo "Regenerating settings.conf..."
+    #sed -e "s|{{KB_LAYOUT}}|$LANG|g" \
+    #    -e "s|{{KB_OPTIONS}}|$KB_OPT|g" \
+    #    "$TMPL_DIR/settings.conf.template" > "$SETTINGS_CONF"
 
     # 3. Regenerate autostart.conf
     echo "Regenerating autostart.conf..."
