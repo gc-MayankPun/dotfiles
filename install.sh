@@ -22,7 +22,7 @@ KITTY_DEST="$HOME/.config/kitty"
 FASTFETCH_SOURCE="$DOTFILES_DIR/fastfetch"
 FASTFETCH_DEST="$HOME/.config/fastfetch"
 
-SDDM_THEME_SOURCE="$DOTFILES_DIR/themes/silent"
+SDDM_THEME_SOURCE="$DOTFILES_DIR/sddm/silent"
 SDDM_CONFIG_SOURCE="$DOTFILES_DIR/sddm/default.conf"
 SDDM_CONFIG_DEST="/usr/share/sddm/themes/silent/configs"
 
