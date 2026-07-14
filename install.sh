@@ -19,6 +19,9 @@ HYPR_DEST="$HOME/.config/hypr"
 KITTY_SOURCE="$DOTFILES_DIR/kitty"
 KITTY_DEST="$HOME/.config/kitty"
 
+FASTFETCH_SOURCE="$DOTFILES_DIR/fastfetch"
+FASTFETCH_DEST="$HOME/.config/fastfetch"
+
 SDDM_THEME_SOURCE="$DOTFILES_DIR/themes/silent"
 SDDM_CONFIG_SOURCE="$DOTFILES_DIR/sddm/default.conf"
 SDDM_CONFIG_DEST="/usr/share/sddm/themes/silent/configs"
@@ -69,6 +72,46 @@ if [ -d "$KITTY_SOURCE" ]; then
     echo "✅ Kitty config installed."
 else
     echo "❌ kitty folder not found in dotfiles!"
+fi
+
+# -----------------------------
+# Backup existing fastfetch config
+# ----------------------------- 
+if [ -d "$FASTFETCH_DEST" ] && ! diff -qr "$FASTFETCH_SOURCE" "$FASTFETCH_DEST" >/dev/null 2>&1; then
+    BACKUP_NAME="$HOME/.config/fastfetch_backup_$(date +%Y%m%d_%H%M%S)"
+    echo "💾 Backing up existing fastfetch config to $BACKUP_NAME"
+    mv "$FASTFETCH_DEST" "$BACKUP_NAME"
+fi
+
+# -----------------------------
+# Install fastfetch config
+# -----------------------------
+if [ -d "$FASTFETCH_SOURCE" ]; then
+    echo "⚙️ Installing fastfetch config..."
+    cp -r "$FASTFETCH_SOURCE" "$FASTFETCH_DEST"
+    echo "✅ Fastfetch config installed."
+else
+    echo "❌ fastfetch folder not found in dotfiles!"
+fi
+
+# -----------------------------
+# Backup existing .zshrc
+# -----------------------------
+if [ -f "$HOME/.zshrc" ] && ! diff -q "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc" >/dev/null 2>&1; then
+    BACKUP_NAME="$HOME/.zshrc_backup_$(date +%Y%m%d_%H%M%S)"
+    echo "💾 Backing up existing .zshrc to $BACKUP_NAME"
+    mv "$HOME/.zshrc" "$BACKUP_NAME"
+fi
+
+# -----------------------------
+# Install .zshrc
+# -----------------------------
+if [ -f "$DOTFILES_DIR/.zshrc" ]; then
+    echo "⚙️ Installing .zshrc..."
+    cp "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+    echo "✅ .zshrc installed."
+else
+    echo "❌ .zshrc not found in dotfiles!"
 fi
 
 # -----------------------------
