@@ -1,0 +1,120 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "auto", 
+    "source": "\"$(~/.config/fastfetch/random_logo.sh)\"",
+    "height": 20,
+    "width": null,
+    "padding": {
+      "top": 1,
+      "left": 5,
+      "right": 10
+    }
+  },
+  "display": {
+    "separator": ""
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "╭─────────────────────── Hardware ───────────────────────╮"
+    }, 
+    {
+      "type": "host",
+      "key": "  PC: ",
+      "format": "{1}"
+    },
+    {
+      "type": "cpu",
+      "format": "{1} @ {7}",
+      "key": "   "
+    },
+    {
+      "type": "gpu",
+      "format": "{1} {2}",
+      "key": "  󰢮 "
+    }, 
+    {
+      "type": "memory",
+      "key": "  󰘚 "
+    },
+    {
+      "type": "disk",
+      "key": "  󰋊 "
+    },
+    {
+      "type": "custom",
+      "format": "╰────────────────────────────────────────────────────────╯"
+    }, 
+    "break",
+    {
+      "type": "custom",
+      "format": "╭────────────────────── Software ────────────────────────╮"
+    },
+    {
+      "type": "os",
+      "key": "   ",
+      "format": "{1}"
+    },
+    {
+      "type": "kernel",
+      "key": "  󰒓 ",
+      "format": "{2}"
+    },
+    {
+      "type": "shell",
+      "key": "  󰆍 "
+    },
+    {
+      "type": "packages",
+      "key": "  󰏗 "
+    },
+    {
+      "type": "custom",
+      "format": "╰────────────────────────────────────────────────────────╯"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "╭────────────────────── Desktop ─────────────────────────╮"
+    },
+    {
+      "type": "wm",
+      "key": "  󰘔 "
+    },
+    {
+      "type": "theme",
+      "key": "  󰉼 "
+    },
+    {
+      "type": "terminal",
+      "key": "   "
+    },
+    {
+      "type": "custom",
+      "format": "╰────────────────────────────────────────────────────────╯"
+    },
+    "break",
+    {
+      "type": "custom",
+      "format": "╭──────────────────── Uptime / DT ───────────────────────╮"
+    },
+    {
+      "type": "uptime",
+      "key": "  Uptime: "
+    },
+    {
+      "type": "datetime",
+      "key": "  DateTime: "
+    },
+    {
+      "type": "custom",
+      "format": "╰────────────────────────────────────────────────────────╯"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
